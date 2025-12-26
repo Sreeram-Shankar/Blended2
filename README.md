@@ -1,4 +1,4 @@
-# Blended2 — Curvature-Controlled Hybrid Implicit ODE Solver
+# Blended2 — Stiffness + Curvature-Controlled Hybrid Implicit ODE Solver
 
 Blended2 is an experimental adaptive ODE solver that combines **method blending** and **curvature-based step size control** into a single, unified framework.
 
