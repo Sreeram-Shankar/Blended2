@@ -34,58 +34,6 @@ Rather than switching between these methods, Blended2 blends them continuously u
 
 ---
 
-Good catch — GitHub README rendering is the classic trap here.
-
-GitHub does not render LaTeX math unless you use images or very limited extensions, so the right fix is to rewrite the math in readable plain-text / pseudo-math form, while keeping it precise.
-
-Below is a fully fixed, GitHub-native README for Blended2, with:
-
-No LaTeX
-
-Clear ASCII math
-
-Preserved rigor
-
-Clean GitHub formatting
-
-Copy-paste ready
-
-# Blended2 — Curvature-Controlled Hybrid Implicit ODE Solver
-
-Blended2 is an experimental adaptive ODE solver that combines **method blending** and **curvature-based step size control** into a single unified framework.
-
-Unlike traditional adaptive solvers, Blended2 does **not** rely on:
-- Embedded Runge–Kutta pairs
-- Method-specific local truncation error (LTE) estimators
-- Explicit stiffness detection or method switching
-
-Instead, it introduces **two orthogonal adaptivity mechanisms**:
-
-1. **Method blending** driven by a stiffness proxy  
-2. **Step size control** driven by geometric curvature  
-
-This separation allows Blended2 to adapt *how* it advances the solution independently from *how far* it advances in time.
-
----
-
-## Core Idea
-
-Blended2 advances the solution by solving **one nonlinear implicit equation per step** that smoothly interpolates between two implicit methods:
-
-- **Implicit Midpoint (Gauss–Legendre 1-stage)**
-  - Symplectic
-  - Energy-preserving
-  - Ideal for nonstiff or weakly stiff problems
-
-- **BDF2 (Second-order Backward Differentiation Formula)**
-  - Strongly damping
-  - L-stable
-  - Ideal for stiff dynamics
-
-Rather than switching between these methods, Blended2 **blends them continuously** using a stiffness-dependent weight.
-
----
-
 ## Blended Residual Formulation
 
 Each step solves a single residual equation of the form:
