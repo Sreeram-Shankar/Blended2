@@ -220,6 +220,6 @@ t, y, info = solve_blended2_adaptive(
 This solver often behaves very differently from classical adaptive RK solvers — by design.
 
 ## Files
-- blended2_fixed.py — fixed-step blended solver
+- blended2_fixed.py/jl — fixed-step blended solver
 
-- blended2_adaptive.py — curvature-adaptive solver
+- blended2_adaptive.py/jl — curvature-adaptive solver
