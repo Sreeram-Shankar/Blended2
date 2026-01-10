@@ -52,8 +52,7 @@ def gl1_residual_and_jac(f, t, y, h, jac_eps=1e-8):
 def bdf2_residual_and_jac(f, t, y, y_prev, h, jac_eps=1e-8):
     t_next = t + h
 
-    def R_bdf2(y_next):
-        return (3.0 * y_next - 4.0 * y + y_prev) / (2.0 * h) - f(t_next, y_next)
+    def R_bdf2(y_next): return (3.0 * y_next - 4.0 * y + y_prev) / (2.0 * h) - f(t_next, y_next)
 
     def J_bdf2(y_next):
         Jf = finite_diff_jac(lambda z: f(t_next, z), y_next, eps=jac_eps)
@@ -118,7 +117,7 @@ def h_proposal(h, E, order=2, safety=0.9, growth=2.0, shrink=0.2,h_min=1e-12, h_
 
 
 #the main solver for the blended method
-def solve_blended2_adaptive(f, t_span, y0, h0, atol=1e-6, rtol=1e-3, p=1.5, a_min=0.05, a_max=0.98, newton_tol=1e-10, newton_max_iter=12, jac_eps=1e-8, curv_eps=1e-6, safety=0.9, growth=2.0, shrink=0.2, h_min=1e-12, h_max=1e1, max_reject=20, max_steps=None):
+def solve_blended2_adaptive(f, t_span, y0, h0, atol=1e-6, rtol=1e-3, p=1.5, a_min=0.05 , a_max=1.0, newton_tol=1e-10, newton_max_iter=12, jac_eps=1e-8, curv_eps=1e-6, safety=0.9, growth=2.0, shrink=0.2, h_min=1e-12, h_max=1e1, max_reject=20, max_steps=None):
     #initializes the solver
     t0, tf = float(t_span[0]), float(t_span[1])
     y = np.asarray(y0, dtype=float).copy()
